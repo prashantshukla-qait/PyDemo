@@ -1,17 +1,21 @@
 import spacy
-# nlp = spacy.load('en_core_web_sm')
-# doc = nlp(u'Apple is looking at buying U.K. startup for $1 billion')
-#
-# for ent in doc.ents:
-#     print(ent.text, ent.start_char, ent.end_char, ent.label_)
 
 class DetectText:
 
     def detectTextIn(self,Text):
+        classFromText=[]
         nlp = spacy.load('en_core_web_sm')
-        doc = nlp(u'This is a man')
+        uni_string=str(Text)
+        doc = nlp(uni_string)
+        print(len(doc.ents))
         for ent in doc.ents:
-            print(ent.text,ent.label_)
+            print(ent.text, ent.start_char, ent.end_char, ent.label_)
+            if ent.label_=='PERSON':
+                return "person"
+             
 
-            if ent.label==u'PERSON':
-                return "PERSON"
+       
+
+                
+
+

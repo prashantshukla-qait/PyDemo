@@ -21,7 +21,7 @@ class DetectObj:
             minSize=(30, 30),
             flags = cv2.CASCADE_SCALE_IMAGE
             )
-            print "Found {0} Match!".format(len(matchs))
+            print("Found {0} Match!".format(len(matchs)));
 
             # Draw a rectangle around the faces
             for (x, y, w, h) in matchs:
