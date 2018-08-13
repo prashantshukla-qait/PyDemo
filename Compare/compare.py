@@ -1,15 +1,18 @@
 from textblob import Word 
 from textblob.wordnet import Synset
 
-def compare(text,classlist):
-      
+def compare(textclasslist,classlist):
+      print("+++++++++++++++++++++++++++++++++++++++++++")
+      print("classes from text::")
+      print(textclasslist)
+      print("\nclasses from Image::")
+      print(classlist)
+      print("+++++++++++++++++++++++++++++++++++++++++++")
       classlist=[x.lower() for x in classlist]
-      if text is None:
-          return False
-      text=text.lower()
       #rule 1
-      if text in classlist:
-          return True
+      for text in textclasslist:
+        if text in classlist:
+            return True
       #rule 2    
       word = Word(text)
       s1 = word.synsets[1] 

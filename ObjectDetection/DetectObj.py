@@ -26,10 +26,13 @@ class DetectObj:
             # Draw a rectangle around the faces
             for (x, y, w, h) in matchs:
                 cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            
+              
             #cv2.imshow("Match found", image)
             #cv2.waitKey(0)
 
             if len(matchs)==0:
                 return False
             else:
+                cv2.imwrite('Images/MatchFound.png',image)
                 return True
