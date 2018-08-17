@@ -28,26 +28,26 @@ class VerifyAccessibilityGuidlines(supertest):
               # print(classfromText)
               self.assertTrue(compare.compare(classfromText, classlist))
 
-    def test_Images_via_API(self):
-         self.driver.get("https://www.runscope.com/customers/human-api")
-         imgs=self.driver.find_elements_by_xpath('//img[@alt="Image of baby foot with sores"]')
-         for img in imgs:
-              classlist=[]
-              src = img.get_attribute('src')
-              response = self.model.predict_by_url(url=src)
-              concepts = response['outputs'][0]['data']['concepts']
-              for concept in concepts:
-                # print(concept['name'], concept['value'])
-                if(concept['value']*100>90.00): 
-                  classlist.append(concept['name'])
-              text = img.get_attribute('alt') 
-              # print(src)
-              if text==None:
-                 imgcaption=img.find_element_by_xpath("../figcaption")
-                 text=imgcaption.text
-              # print(text)
-              classfromText=self.detectText.detectTextIn(text)
-              self.assertTrue(compare.compare(classfromText, classlist))
+    # def test_Images_via_API(self):
+    #      self.driver.get("https://www.cdc.gov/features/handfootmouthdisease/index.html")
+    #      imgs=self.driver.find_elements_by_xpath('//img[contains(@alt,"baby\'s foot")]')
+    #      for img in imgs:
+    #           classlist=[]
+    #           src = img.get_attribute('src')
+    #           response = self.model.predict_by_url(url=src)
+    #           concepts = response['outputs'][0]['data']['concepts']
+    #           for concept in concepts:
+    #             # print(concept['name'], concept['value'])
+    #             if(concept['value']*100>90.00): 
+    #               classlist.append(concept['name'])
+    #           text = img.get_attribute('alt') 
+    #           # print(src)
+    #           if text==None:
+    #              imgcaption=img.find_element_by_xpath("../figcaption")
+    #              text=imgcaption.text
+    #           # print(text)
+    #           classfromText=self.detectText.detectTextIn(text)
+    #           self.assertTrue(compare.compare(classfromText, classlist))
 
     def test_face_Image_via_API(self):
          self.driver.get("https://www.runscope.com/customers/human-api")

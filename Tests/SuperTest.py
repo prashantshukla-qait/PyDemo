@@ -20,6 +20,8 @@ class supertest(unittest.TestCase):
     def setUp(self):
         os.environ["webdriver.chrome.driver"] = supertest.chromedriver
         supertest.driver = webdriver.Chrome(supertest.chromedriver)
+        supertest.driver.set_window_size(1024, 600)
+        supertest.driver.maximize_window()
 
     def tearDown(self):
          supertest.driver.quit()
